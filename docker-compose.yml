@@ -1,0 +1,8 @@
+version: "3.9"
+services:
+  pgsql:
+    image: postgres:latest
+    ports:
+      - 6000:5432
+    environment:
+      POSTGRES_PASSWORD: natan
