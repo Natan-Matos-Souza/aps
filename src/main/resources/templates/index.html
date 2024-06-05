@@ -1,1 +1,5 @@
-<h1>Home =D</h1>
+<div class="container">
+    <div th:each="company :${data}">
+        <span th:text="${company.companyName}"></span>
+    </div>
+</div>
