@@ -2,29 +2,43 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/global/global.css}" }>
+    <link rel="stylesheet" th:href="@{/css/login/login.css}" }>
+    <title>Cadastrar Empresa</title>
 </head>
 <body>
-    <form method="POST" th:action="@{/login}" th:object="${loginDto}">
-        <label for="companyEmail">Email:</label>
-        <input
-                type="email"
-                id="companyEmail"
-                name="companyEmail"
-                th:field="*{companyEmail}"
-                required
-        />
+<main>
+    <div class="container">
+        <h1 class="container-title">
+            Login
+        </h1>
 
-        <label for="password">Senha:</label>
-        <input
-                type="password"
-                id="password"
-                name="password"
-                th:field="*{password}"
-                required
-        />
+        <div class="form-container">
+            <form class="form-area" th:action="@{/login}" method="POST" th:object="${loginDto}">
+                <div class="form-input-area">
+                    <label for="company-email">Email:</label>
+                    <div class="input-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <input class="form-input" placeholder="Ex: Ambev" type="text" id="company-email" th:field="*{companyEmail}">
+                </div>
 
-        <input type="submit" value="Enviar"/>
-    </form>
+                <div class="form-input-area">
+                    <label for="company-name">Senha:</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <input class="form-input" placeholder="Sua Senha" type="password" id="company-name" th:field="*{password}">
+                </div>
+
+                <div clas="submit-btn-area">
+                    <input class="submit-btn" type="submit" value="Cadastrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
 </body>
 </html>

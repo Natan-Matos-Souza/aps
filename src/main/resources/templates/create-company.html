@@ -1,51 +1,56 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastrar empresa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/global/global.css}">
+    <link rel="stylesheet" th:href="@{/css/create-company/create-company.css}">
+    <title>Cadastrar Empresa</title>
 </head>
 <body>
-<div class="container text-center">
+<main>
+    <div class="container">
+        <h1 class="container-title">
+            Cadastro
+        </h1>
 
-    <h1>Cadastro</h1>
+        <div class="form-container">
+            <form class="form-area" th:action="@{/company/create}" method="POST" th:object="${company}">
+                <div class="form-input-area">
+                    <label for="company-name">Empresa:</label>
+                    <div class="input-icon">
+                        <i class="fa-regular fa-building"></i>
+                    </div>
+                    <input class="form-input" placeholder="Ex: Ambev" type="text" id="company-name" th:field="*{companyName}" required>
+                </div>
 
-    <div class="container form-container">
-        <form method="post" role="form" th:action="@{/company/create}" th:object="${company}">
-            <div class="form-input-area">
-                <label for="company-name">Nome da Empresa:</label>
-                <input
-                        type="text"
-                        name="company-name"
-                        id="company-name"
-                        th:field="*{companyName}"
-                >
-            </div>
+                <div class="form-input-area">
+                    <label for="company-email">Email:</label>
+                    <div class="input-icon">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <input class="form-input" placeholder="Ex: Ambev" type="email" id="company-email" th:field="*{companyEmail}" required>
+                </div>
 
-            <div class="form-input-area">
-                <label for="company-email">Email da Empresa:</label>
-                <input
-                        type="email"
-                        name="company-email"
-                        id="company-email"
-                        th:field="*{companyEmail}"
-                >
-            </div>
+                <div class="form-input-area">
+                    <label for="company-password">Senha:</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+                    <input class="form-input" placeholder="Sua Senha" type="password" id="company-password" th:field="*{companyPassword}" required>
+                </div>
 
-            <div class="form-input-area">
-                <label for="company-password">Senha da Empresa:</label>
-                <input
-                        type="password"
-                        name="company-password"
-                        id="company-password"
-                        th:field="*{companyPassword}"
-                >
-            </div>
-
-            <input type="submit" value="Cadastrar" class="btn btn-primary">
-        </form>
+                <div clas="submit-btn-area">
+                    <input class="submit-btn" type="submit" value="Cadastrar">
+                </div>
+            </form>
+        </div>
     </div>
-</div>
+
+    <div class="text-container">
+        <p class="container-subtitle">Cadastre sua empresa para obter monitoramento gratuito.</p>
+    </div>
+</main>
 </body>
 </html>
