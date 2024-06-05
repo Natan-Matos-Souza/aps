@@ -1,25 +1,33 @@
 package com.example.demo.controllers;
 
 import com.example.demo.dto.LoginDto;
+import com.example.demo.models.Company;
+import com.example.demo.repository.company.CompanyDao;
 import com.example.demo.services.impl.LoginService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
+
+import java.util.List;
 
 @Controller
 public class LoginController
 {
     private LoginService loginService;
+    private CompanyDao companyDao;
 
     @Autowired
-    public LoginController(LoginService loginService) {
+    public LoginController(
+            LoginService loginService,
+            CompanyDao companyDao
+    )
+    {
         this.loginService = loginService;
+        this.companyDao = companyDao;
     }
 
     @GetMapping("/login")
@@ -31,23 +39,20 @@ public class LoginController
     @PostMapping("/login")
     public String authenticate(
             @ModelAttribute("loginDto") LoginDto loginDto,
-            HttpSession session,
-            Model model
+            HttpSession session
     ) {
 
-        if (this.loginService.auth(loginDto)) {
-            session.setAttribute("logged", true);
-            session.setAttribute("companyEmail", loginDto.getCompanyEmail());
+        if (!this.loginService.auth(loginDto)) {
+            return "redirect:/login";
         }
 
-        model.addAttribute("isLogged", session.getAttribute("logged"));
-        return "redirect:/testLogin";
-    }
+        Company company = this.companyDao.findByCompanyEmail(loginDto.getCompanyEmail()).iterator().next();
+        session.setAttribute("logged", true);
+        session.setAttribute("companyEmail", loginDto.getCompanyEmail());
+        session.setAttribute("companyId", company.getId());
 
-    @GetMapping("/testLogin")
-    public String testLogin(Model model, HttpSession session) {
-        model.addAttribute("isLogged", session.getAttribute("logged"));
-        return "testLogin";
+        return "redirect:/dashboard";
+
     }
 
     @GetMapping("/logout")

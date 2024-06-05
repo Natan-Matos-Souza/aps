@@ -15,12 +15,16 @@
         <thead>
             <tr>
                 <th>Logado</th>
+                <th>Company Id</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td th:if="${isLogged}">Logado</td>
                 <td th:unless="${isLogged}">Não Logado</td>
+
+                <td th:if="${companyId}" th:text="${companyId}"></td>
+                <td th:unless="${companyId}">Valor não declarado!</td>
             </tr>
         </tbody>
     </table>
