@@ -49,4 +49,14 @@ public class LoginController
         model.addAttribute("isLogged", session.getAttribute("logged"));
         return "testLogin";
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session)
+    {
+        if (this.loginService.isAuthenticated()) {
+            session.invalidate();
+        }
+
+        return "redirect:/login";
+    }
 }
