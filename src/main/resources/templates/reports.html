@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/css/components/sidebar.css}">
+    <link rel="stylesheet" th:href="@{/css/global/global.css}">
+    <link rel="stylesheet" th:href="@{/css/reports/reports.css}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Reporte</title>
 </head>
 <body>
     <nav class="sidebar">
@@ -37,5 +40,44 @@
             </a>
         </div>
     </nav>
+    <main>
+        <div class="container">
+            <h1>Reporte</h1>
+            <p>Descreva como a sua empresa está colaborando com o meio ambiente</p>
+        </div>
+
+        <div class="form-container">
+            <form class="form-area">
+                <div class="form-input-area">
+                    <label for="report-description">Descrição:</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <input class="form-input" placeholder="Reporte de Janeiro" type="text" id="company-email">
+                </div>
+
+                <div class="form-input-area">
+                    <label for="company-name">Emissão de Carbono (Kg):</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-smog"></i>
+                    </div>
+                    <input style="text-indent: 32px;" class="form-input" placeholder="Ex: 20kg" type="number" id="company-name">
+                </div>
+
+                <div class="form-input-area date-input-area">
+                    <label for="report-description">Data do Reporte:</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </div>
+                    <input class="form-input date-input" placeholder="Reporte de Janeiro" type="date" id="company-email">
+                </div>
+
+                <div clas="submit-btn-area">
+                    <input class="submit-btn" type="submit" value="Cadastrar">
+                </div>
+            </form>
+        </div>
+    </main>
+    <script th:src="@{/js/sidebar/sidebar.js}"></script>
 </body>
 </html>
