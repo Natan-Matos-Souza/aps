@@ -1,0 +1,198 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');*/
+
+/*!***/
+/*    I think it's better it be in other file.*/
+/**!*/
+/** {*/
+/*    margin: 0px;*/
+/*    padding: 0px;*/
+/*    box-sizing: border-box;*/
+/*    font-family: 'Poppins', sans-serif;*/
+/*}*/
+
+:root {
+    --primary-color: #C5EBAA;
+    --secondary-color: #A5DD9B;
+
+    --dark-color: #000;
+    --light-color: #fff;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #e3e9f7;
+    min-height: 100vh;
+}
+
+main {
+    width: 88%;
+    padding: 20px;
+    margin: 0px 0px 0px 12%;
+    color: #fff;
+}
+
+.sidebar {
+    width: 5%;
+    position: fixed;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #fff;
+    justify-content: space-between;
+    border-radius: 0px 18px 18px 0px;
+}
+
+.side-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 1px;
+    list-style: none;
+}
+
+
+.link {
+    transition: 500ms;
+    border-radius: 8px;
+    padding: 14px;
+    cursor: pointer;
+}
+
+.link a {
+    justify-content: center;
+    color: var(--dark-color);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.link a i {
+    display: flex;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+}
+
+.link:hover:not(.active),
+.logout-btn:hover {
+    background-color: #e3e9f7;
+}
+
+.link.active {
+    background-color: var(--primary-color);
+
+}
+
+.link.active a {
+    color: var(--light-color);
+}
+
+.logout {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 12px;
+    border-top: 1px solid #e3e9f7;
+    padding: 12px;
+}
+
+.logout-btn {
+    text-decoration: none;
+    color: #000;
+    border-radius: 12px;
+    border: none;
+    padding: 12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    gap: 8px;
+}
+
+#open-btn {
+    position: absolute;
+    top: 30px;
+    right: -10px;
+    width: 20px;
+    height: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 100%;
+    background-color: #A5DD9B;
+    color: #fff;
+}
+
+.close-navbar {
+    transform: rotate(180deg);
+}
+
+.item-description {
+    overflow: hidden;
+    width: 0%;
+    white-space: nowrap;
+    font-size: 14px;
+    text-overflow: ellipsis;
+}
+
+.sidebar.open-sidebar {
+    min-width: 12%;
+}
+
+.sidebar.open-sidebar {
+    width: 8%;
+}
+
+.sidebar.open-sidebar .link a {
+    justify-content: inherit;
+    gap: 14px;
+}
+
+.sidebar.open-sidebar .item-description {
+    overflow: visible;
+}
+
+.sidebar.open-sidebar .logout {
+    justify-content: inherit;
+    overflow: hidden;
+}
+
+.sidebar.open-sidebar .logout-btn {
+    display: block;
+}
+
+@media  screen and (max-width: 1000px) {
+    .sidebar {
+        width: 15%;
+    }
+}
+
+@media  screen and (max-width: 700px) {
+    .sidebar {
+        width: 15%;
+    }
+    .sidebar.open-sidebar {
+        width: 30%;
+    }
+
+    .sidebar.open-sidebar .link a {
+        justify-content: inherit;
+        gap: 14px;
+    }
+
+    .sidebar.open-sidebar .item-description {
+        overflow: visible;
+    }
+
+    .sidebar.open-sidebar .logout {
+        justify-content: inherit;
+        overflow: hidden;
+    }
+
+    .sidebar.open-sidebar .logout-btn {
+        display: block;
+    }
+}

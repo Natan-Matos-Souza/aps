@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/}">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-content">
+            <ul class="side-links">
+                <li class="link">
+                    <a href="#">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <span class="item-description">Relatório</span>
+                    </a>
+                </li>
+                <li class="link">
+                    <a href="#">
+                        <i class="fa-regular fa-square-plus"></i>
+                        <span class="item-description">Reportar</span>
+                    </a>
+                </li>
+            </ul>
+
+            <button id="open-btn">
+                <i id="open-btn-icon" class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="logout">
+            <a th:href="@{/logout}" class="logout-btn">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="item-description">Logout</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html>
