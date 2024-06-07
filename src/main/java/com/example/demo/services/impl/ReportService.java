@@ -34,6 +34,6 @@ public class ReportService implements ReportServiceInterface
 
     @Override
     public List<Report> getReportsFromUser(Long userId) {
-        return List.of();
+        return this.repository.findByCompanyId(userId);
     }
 }
