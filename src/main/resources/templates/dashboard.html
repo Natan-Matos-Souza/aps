@@ -100,7 +100,9 @@
     });
 
     const averagePolutionContainer = document.querySelector('.average-area span');
-    averagePolutionContainer.innerHTML = `${totalPolution / data.length} Kg`;
+    const averagePolution = totalPolution / data.length;
+
+    averagePolutionContainer.innerHTML = (averagePolution) ? `${averagePolution} Kg` : "Sem registro";
 
     const lineChart = document.querySelector('.line-chart');
     const barChart = document.querySelector('.bar-chart');

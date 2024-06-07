@@ -32,6 +32,6 @@ public class CompanyController
     public String store(@ModelAttribute("company") Company company)
     {
         this.companyService.store(company);
-        return "redirect:/company/create";
+        return "redirect:/login?newMember=true";
     }
 }
