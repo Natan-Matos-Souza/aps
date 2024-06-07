@@ -47,29 +47,21 @@
         </div>
 
         <div class="form-container">
-            <form class="form-area">
+            <form class="form-area" method="POST" th:action="@{/reports/create}" th:object="${report}">
                 <div class="form-input-area">
                     <label for="report-description">Descrição:</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-circle-info"></i>
                     </div>
-                    <input class="form-input" placeholder="Reporte de Janeiro" type="text" id="company-email">
+                    <input class="form-input" placeholder="Reporte de Janeiro" type="text" id="report-description" th:field="*{description}">
                 </div>
 
                 <div class="form-input-area">
-                    <label for="company-name">Emissão de Carbono (Kg):</label>
+                    <label for="polution-registered">Emissão de Carbono (Kg):</label>
                     <div class="input-icon">
                         <i class="fa-solid fa-smog"></i>
                     </div>
-                    <input style="text-indent: 32px;" class="form-input" placeholder="Ex: 20kg" type="number" id="company-name">
-                </div>
-
-                <div class="form-input-area date-input-area">
-                    <label for="report-description">Data do Reporte:</label>
-                    <div class="input-icon">
-                        <i class="fa-solid fa-circle-info"></i>
-                    </div>
-                    <input class="form-input date-input" placeholder="Reporte de Janeiro" type="date" id="company-email">
+                    <input style="text-indent: 32px;" class="form-input" placeholder="Ex: 20kg" type="number" id="polution-registered" th:field="*{polutionRegistered}">
                 </div>
 
                 <div clas="submit-btn-area">

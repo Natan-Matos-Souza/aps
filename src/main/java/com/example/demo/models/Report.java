@@ -1,11 +1,12 @@
 package com.example.demo.models;
 
 import jakarta.persistence.*;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
+@Setter
 @Entity
 @Table(name = "reports")
 public class Report
@@ -13,6 +14,7 @@ public class Report
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reportId;
+    private String description;
     private Long companyId;
     private Long polutionPerMonth;
     @CreationTimestamp
