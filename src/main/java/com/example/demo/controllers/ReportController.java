@@ -1,6 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.dto.ReportDto;
+import com.example.demo.services.impl.LoginService;
 import com.example.demo.services.impl.ReportService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,16 +17,22 @@ import java.util.List;
 public class ReportController
 {
     private ReportService reportService;
+    private LoginService loginService;
 
     @Autowired
-    public ReportController(ReportService reportService)
+    public ReportController(ReportService reportService, LoginService loginService)
     {
+        this.loginService = loginService;
         this.reportService = reportService;
     }
 
     @GetMapping("/reports/create")
     public String index(Model model, HttpSession session)
     {
+        if (!this.loginService.isAuthenticated()) {
+            return "redirect:/login";
+        }
+
         model.addAttribute("report", new ReportDto());
         return "reports";
     }

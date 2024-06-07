@@ -4,6 +4,7 @@ import com.example.demo.dto.LoginDto;
 import com.example.demo.models.Company;
 import com.example.demo.repository.company.CompanyDao;
 import com.example.demo.services.impl.LoginService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,8 +30,9 @@ public class LoginController
     }
 
     @GetMapping("/login")
-    public String index(Model model) {
+    public String index(Model model, HttpServletRequest request) {
         model.addAttribute("loginDto", new LoginDto());
+        model.addAttribute("request", request);
         return "login";
     }
 
@@ -41,7 +43,7 @@ public class LoginController
     ) {
 
         if (!this.loginService.auth(loginDto)) {
-            return "redirect:/login";
+            return "redirect:/login?invalidCredentials=true";
         }
 
         Company company = this.companyDao.findByCompanyEmail(loginDto.getCompanyEmail()).iterator().next();
@@ -60,6 +62,6 @@ public class LoginController
             session.invalidate();
         }
 
-        return "redirect:/login";
+        return "redirect:/login?logout=true";
     }
 }
